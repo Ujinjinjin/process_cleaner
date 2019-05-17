@@ -1,7 +1,7 @@
-import json
+from typing import List
+
 import psutil
 
-from typing import List
 from ..settings import processes
 
 __all__ = ('Cleaner',)
@@ -9,7 +9,6 @@ __all__ = ('Cleaner',)
 
 class Cleaner:
     """Process cleaner"""
-
     def __init__(self):
         self.processes: List[str] = list()
         self.active_processes: List[str] = list()
