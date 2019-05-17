@@ -1,7 +1,8 @@
 import json
-from typing import List
-
 import psutil
+
+from typing import List
+from ..settings import processes
 
 __all__ = ('Cleaner',)
 
@@ -9,11 +10,11 @@ __all__ = ('Cleaner',)
 class Cleaner:
     """Process cleaner"""
 
-    def __init__(self, settings_filename: str):
+    def __init__(self):
         self.processes: List[str] = list()
         self.active_processes: List[str] = list()
 
-        self._get_processes(settings_filename)
+        self._get_processes()
         self._get_active_processes()
 
     def clean_processes(self) -> None:
@@ -23,7 +24,8 @@ class Cleaner:
         cleaned_amount: int = 0
 
         print(
-            f'\n{active_amount} out of {total_amount} processes running right now. Following processes will be killed:\n')
+            f'\n{active_amount} out of {total_amount} processes running right now. '
+            f'Following processes will be killed:\n')
         for number, name in enumerate(self.active_processes):
             print(f'{number + 1}. {name}')
 
@@ -38,11 +40,9 @@ class Cleaner:
 
         print(f'Cleaned {cleaned_amount} of {active_amount}')
 
-    def _get_processes(self, settings_filename: str) -> None:
+    def _get_processes(self) -> None:
         """Get process names from settings file"""
-        with open(settings_filename, 'r', encoding='utf8') as settings_file:
-            settings = json.load(settings_file)
-            self.processes = settings['processes']
+        self.processes = processes
 
     def _get_active_processes(self) -> None:
         """Filter inactive processes from process list"""

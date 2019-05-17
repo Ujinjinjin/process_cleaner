@@ -8,11 +8,10 @@ __all__ = ('Program',)
 
 class Program:
     """Main program, that should be started"""
-    def __init__(self, main_file: str, settings_filename: str):
+    def __init__(self, main_file: str):
         self.main_file: str = main_file
         self.utils: BaseUtils = self._get_utils()
-        self.settings_filename: str = settings_filename
-        self.cleaner = Cleaner(settings_filename)
+        self.cleaner = Cleaner()
 
     def start(self):
         """Start program as admin"""
