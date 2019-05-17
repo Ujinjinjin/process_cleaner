@@ -1,18 +1,9 @@
-import ctypes
-import psutil
 import json
-
 from typing import List
 
-__all__ = ('is_admin', 'clean_processes',)
+import psutil
 
-
-# noinspection PyBroadException
-def is_admin() -> bool:
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except Exception:
-        return False
+__all__ = ('clean_processes',)
 
 
 def clean_processes(settings_filename: str) -> None:
