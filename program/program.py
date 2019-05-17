@@ -7,14 +7,15 @@ __all__ = ('Program',)
 
 
 class Program:
-    """Doc"""
+    """Main program, that should be started"""
     def __init__(self, main_file: str, settings_filename: str):
         self.main_file: str = main_file
         self.utils: BaseUtils = self._get_utils()
         self.settings_filename: str = settings_filename
+        self.cleaner = Cleaner(settings_filename)
 
     def start(self):
-        """Doc"""
+        """Start program as admin"""
         if self.utils.is_admin():
             self._start()
         else:
@@ -22,17 +23,17 @@ class Program:
 
     # noinspection PyBroadException
     def _start(self):
-        """Doc"""
+        """Main logic"""
         print('Starting to clean processes...')
         try:
-            clean_processes(self.settings_filename)
+            self.cleaner.clean_processes()
             print('Alright we are done!')
             input('Press Enter to continue...')
         except Exception:
             print('Something went wrong. I dunno what exactly, cuz I do not log any operations...')
 
     def _get_utils(self) -> BaseUtils:
-        """Doc"""
+        """Get utils class depending on what system it's running"""
         cleaners_by_system: Dict[str, Type[BaseUtils]] = {
             'Linux': LinuxUtils,
             'Windows': WindowsUtils

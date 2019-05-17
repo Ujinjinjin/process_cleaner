@@ -1,5 +1,5 @@
 {
-  "process_names": [
+  "processes": [
     "AGSService.exe",
     "AGMService.exe",
     "AdobeIPCBroker.exe",

@@ -7,23 +7,23 @@ __all__ = ('BaseUtils', 'WindowsUtils', 'LinuxUtils',)
 
 
 class BaseUtils(ABC):
-    """Doc"""
+    """Base abstract utils class"""
     def __init__(self, main_file: str):
         self.main_file = main_file
 
     @abstractmethod
     def is_admin(self) -> bool:
-        """Doc"""
+        """Check is script running with admin privileges"""
         pass
 
     @abstractmethod
     def restart_as_admin(self) -> None:
-        """Doc"""
+        """Restart script with admin privileges"""
         pass
 
 
 class WindowsUtils(BaseUtils):
-    """Doc"""
+    """Windows OS utils"""
     # noinspection PyBroadException
     def is_admin(self) -> bool:
         try:
@@ -36,7 +36,7 @@ class WindowsUtils(BaseUtils):
 
 
 class LinuxUtils(BaseUtils):
-    """Doc"""
+    """Linux OS utils"""
     def is_admin(self) -> bool:
         return os.geteuid() == 0
 
