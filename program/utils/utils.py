@@ -1,6 +1,6 @@
 import ctypes
-import sys
 import os
+import sys
 from abc import ABC, abstractmethod
 
 __all__ = ('BaseUtils', 'WindowsUtils', 'LinuxUtils',)
@@ -8,6 +8,7 @@ __all__ = ('BaseUtils', 'WindowsUtils', 'LinuxUtils',)
 
 class BaseUtils(ABC):
     """Base abstract utils class"""
+
     def __init__(self, main_file: str):
         self.main_file = main_file
 
@@ -24,6 +25,7 @@ class BaseUtils(ABC):
 
 class WindowsUtils(BaseUtils):
     """Windows OS utils"""
+
     # noinspection PyBroadException
     def is_admin(self) -> bool:
         try:
@@ -37,6 +39,7 @@ class WindowsUtils(BaseUtils):
 
 class LinuxUtils(BaseUtils):
     """Linux OS utils"""
+
     def is_admin(self) -> bool:
         return os.geteuid() == 0
 

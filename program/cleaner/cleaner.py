@@ -9,6 +9,7 @@ __all__ = ('Cleaner',)
 
 class Cleaner:
     """Process cleaner"""
+
     def __init__(self):
         self.processes: List[str] = list()
         self.active_processes: List[str] = list()

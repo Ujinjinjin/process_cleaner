@@ -1,13 +1,15 @@
 import platform
+from typing import Dict, Type
+
 from program.cleaner.cleaner import *
 from program.utils.utils import *
-from typing import Dict, Type
 
 __all__ = ('Program',)
 
 
 class Program:
     """Main program, that should be started"""
+
     def __init__(self, main_file: str):
         self.main_file: str = main_file
         self.utils: BaseUtils = self._get_utils()

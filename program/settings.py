@@ -20,5 +20,9 @@ processes: List[str] = [
     'OfficeClickToRun.exe',
     'PresentationFontCache.exe',
     'sqlwriter.exe',
-    'fish'
+    'fish',
+    'Unity Hub.exe',
+    'EpicGamesLauncher.exe',
+    'WINWORD.EXE',
+    'POWERPNT.EXE',
 ]
